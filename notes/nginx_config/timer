@@ -1,0 +1,41 @@
+upstream phoenix {
+    server 127.0.0.1:4001;
+}
+
+server {
+        server_name timer;
+
+        listen 80 ;
+        listen [::]:80 ;
+
+        location /uploads {
+                location ~* ([/|.|\w|\s|-])*\.(jpe?g|png)$ {
+                        root /var/lib/timer;
+                        allow all;
+                }
+        }
+
+        location / {
+                allow all;
+
+                # asset delivery using NGINX
+                location ~* ^.+\.(css|cur|gif|gz|ico|jpg|jpeg|js|png|svg|woff|woff2)$ {
+                        root /opt/timer/lib/timer-0.1.0/priv/static;
+                        etag off;
+                        expires max;
+                        add_header Cache-Control public;
+                }
+
+                # Proxy Headers
+                proxy_http_version 1.1;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Cluster-Client-Ip $remote_addr;
+
+                # WebSockets
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+
+                proxy_pass http://phoenix;
+        }
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=Curling Game Timer Service
+
+[Service]
+Type=simple
+User=timer
+Group=timer
+WorkingDirectory=/opt/timer
+ExecStart=/opt/timer/bin/timer start
+ExecStop=/opt/timer/bin/timer stop
+Restart=on-failure
+RestartSec=5
+Environment='PORT=4001'
+Environment='LANG=en_US.UTF-8'
+SyslogIdentifier=timer
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

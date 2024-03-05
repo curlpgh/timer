@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .table {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+
+  .table-caption {
+    @apply px-2 inline-flex items-center text-sm font-medium;
+  }
+
+  .table thead {
+    @apply bg-gray-50;
+  }
+
+  .table .table-header {
+    @apply bg-gray-50;
+  }
+
+  .table thead th {
+    @apply px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  .table .table-header .t-cell {
+    @apply px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  .table tbody {
+    @apply bg-white divide-y divide-gray-200;
+  }
+
+  .table .table-body {
+    @apply bg-white divide-y divide-gray-200;
+  }
+
+  .table tbody td {
+    @apply px-6 pt-1 lg:py-4 whitespace-nowrap text-sm text-gray-500;
+  }
+
+  .table .table-body .t-cell {
+    @apply px-6 p-1 lg:py-4 whitespace-normal text-sm text-gray-500;
+  }
+
+  .table .table-body .t-cell-sub {
+    @apply lg:pt-0;
+  }
+
+  .table tbody .actions {
+    @apply px-6 lg:py-4 whitespace-nowrap text-right text-sm font-medium divide-x divide-gray-500;
+  }
+
+  .table .table-body .actions {
+    @apply px-6 lg:py-4 whitespace-nowrap text-right text-sm font-medium divide-x divide-gray-500;
+  }
+
+  .table tbody .icon-actions {
+    @apply px-6 pb-4 lg:py-4 whitespace-nowrap text-right text-sm font-medium;
+  }
+
+  .table .table-body .icon-actions {
+    @apply px-6 pb-4 lg:py-4 whitespace-nowrap text-right text-sm font-medium;
+  }
+
+
+}

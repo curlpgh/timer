@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /*
+  Can't do this dynamically. Must use css stright up. See app.css.
+  .bg_running {
+    @apply  text-white;
+  }
+
+  .bg_warning {
+    @apply  text-gray-900 bg-yellow-400;
+  }
+
+  .bg_timeout {
+    @apply  text-white bg-red-900;
+  }
+  */
+}

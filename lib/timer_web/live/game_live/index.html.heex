@@ -1,0 +1,138 @@
+<.header>
+  <.link navigate={~p"/"} title="Return to Splash Page" class="flex gap-3">
+    <.arrow_uturn_left_solid />Splash
+  </.link>
+
+  <.link
+    patch={~p"/games/upload_logo"}
+    title="Change the logo on the spalsh page"
+    class="btn-link"
+  >
+    <.pencil_svg /> Change Logo
+  </.link>
+
+  <:actions>
+    <.link patch={~p"/games/new"} class="btn-link">
+      <.plus_svg /> New Timer
+    </.link>
+  </:actions>
+</.header>
+
+<div class="flex flex-col mt-6">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="table">
+          <div class="table-header hidden lg:grid lg:grid-cols-9 md:gap-4">
+            <div class="t-cell">Name</div>
+            <div class="t-cell">Count down minutes</div>
+            <div class="t-cell">Number of ends</div>
+            <div class="t-cell">Display ends</div>
+            <div class="t-cell">Finish extension</div>
+            <div class="t-cell">Start minute</div>
+            <div class="t-cell">Start paused</div>
+            <div class="t-cell">Default timer</div>
+            <div class="t-cell col-span-1"></div>
+          </div>
+          <div class="table-body">
+            <%= for game <- @games1 do %>
+              <div class="grid lg:grid-cols-9 gap-4 stripe-even-gray">
+                <div class="t-cell">
+                  <%= game.sheet %>
+                </div>
+                <div class="t-cell">
+                  <%= game.count_down_minutes %>
+                </div>
+                <div class="t-cell">
+                  <%= game.number_of_ends %>
+                </div>
+                <div class="t-cell">
+                  <input
+                    id={"display_ends_#{game.id}"}
+                    name="display_ends"
+                    type="checkbox"
+                    class="rounded border-zinc-300 text-zinc-500 focus:ring-zinc-500"
+                    checked={game.display_ends}
+                    disabled
+                  />
+                </div>
+                <div class="t-cell">
+                  <%= game.finish_extension %>
+                </div>
+                <div class="t-cell">
+                  <%= game.start_minute %>
+                </div>
+                <div class="t-cell">
+                  <input
+                    id={"pause_#{game.id}"}
+                    name="pause"
+                    type="checkbox"
+                    class="rounded border-zinc-300 text-zinc-500 focus:ring-zinc-500"
+                    checked={game.pause}
+                    disabled
+                  />
+                </div>
+                <div class="t-cell">
+                  <input
+                    id={"default_game_#{game.id}"}
+                    name="default_game"
+                    type="checkbox"
+                    class="rounded border-zinc-300 text-zinc-500 focus:ring-zinc-500"
+                    checked={game.default_game}
+                    disabled
+                  />
+                </div>
+                <div class="icon-actions col-span-1">
+                  <div class="flex justify-between gap-4">
+                    <.link navigate={~p"/games/#{game}"} title="Start"><.play_svg /></.link>
+                    <.link patch={~p"/games/#{game}/edit"} title="Edit"><.pencil_svg /></.link>
+                    <.link
+                      title="Delete"
+                      phx-click={JS.push("delete", value: %{id: game.id}) |> hide("##{game.id}")}
+                      data-confirm="Are you sure?"
+                    >
+                      <.trash_svg />
+                    </.link>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="game-modal"
+  show
+  on_cancel={JS.navigate(~p"/games")}
+>
+  <.live_component
+    module={TimerWeb.GameLive.FormComponent}
+    id={@game.id || :new}
+    title={@page_title}
+    action={@live_action}
+    game={@game}
+    current_user={@current_user}
+    patch={~p"/games"}
+  />
+</.modal>
+
+<.modal
+  :if={@live_action in [:upload_logo]}
+  id="logo-modal"
+  show
+  on_cancel={JS.navigate(~p"/games")}
+>
+  <.live_component
+    module={TimerWeb.UploadLogoComponent}
+    id={:upload_logo}
+    title={@page_title}
+    action={@live_action}
+    current_user={@current_user}
+    patch={~p"/games"}
+  />
+</.modal>

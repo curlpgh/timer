@@ -1,0 +1,19 @@
+services:
+  app:
+    image: timer:0.1.0
+    build:
+      context: .
+    ports:
+      - "4001:4001"
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/timer/db
+      - uploads:/var/lib/timer/uploads
+      - error_logs:/var/lib/timer/error_logs
+
+volumes:
+  db-data:
+  uploads:
+  error_logs:
+
+

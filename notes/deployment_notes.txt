@@ -1,0 +1,74 @@
+
+These notes describe installing and running without Docker.
+
+Create app user on production
+> sudo adduser --system --disabled-login --no-create-home --group timer
+
+Database is sqlite3. Create directory for database. chown to timer service user and local user.
+The local user is needed to run migrations. Local user name is "pcc". Service user is "timer".
+
+> sudo mkdir -p /var/lib/timer
+> sudo chown timer:pcc /var/lib/timer
+> sudo chmod g+w /var/lib/timer
+
+Create production sqlite database. First install sqllite3
+> sudo apt install sqlite3
+> sqlite3 timer_prod.db
+Perform some operation in sqlite to get the database file to be created. Three files are created.
+
+Copy database files to /var/lib/timer
+> sudo cp timer_prod.* /var/lib/timer
+
+Chown the files and make sure they are writable by timer and pcc:
+> sudo chown -R timer:pcc /var/lib/timer
+> sudo chmod -R g+w /var/lib/timer
+
+Copy logrotate file to /etc/logrotate.d and chown to root.
+
+Create error log directory and chown to timer and pcc
+> sudo mkdir /var/log/timer
+> sudo chown timer:pcc /var/log/timer
+> sudo chmod g+w /var/log/timer
+
+Copy systemd service file to /var/systemd/system and chown to root.
+
+Copy nginx configuration file to /etc/nginx/sites-available and make symlink in sites-enabled.
+
+Create build directory in pcc home directory
+> mkdir -p build/timer
+
+On development workstation rsync to production:
+> ./copy_to_prod.sh
+
+Build on production:
+> ./timer_build.sh
+
+Migrate the database:
+> PORT=4010 build/timer/_build/prod/rel/timer/bin/timer start_iex
+iex> Timer.Release.migrate
+
+Create deployment directory
+> sudo mkdir /opt/timer
+> sudo chown timer: /opt/timer
+
+Deploy:
+> ./timer_deploy.sh
+
+Access on port 80. Assuming timer is the machine name set up locally:
+
+http://timer
+
+
+Set up start up launcher in Ubuntu or Raspberry PI (Bullseye)launching Chromimum in full screen (kiosk) mode:
+
+Create timer.desktop file in ~/.config/autostart direstory:
+
+[Desktop Entry]
+Name=Curling Timer
+Exec=/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --start-screen http://timer
+Type=Application
+
+
+
+
+

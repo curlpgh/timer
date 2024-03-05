@@ -1,0 +1,14 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-link {
+    @apply no-underline text-indigo-600 hover:no-underline hover:text-indigo-900 px-2 inline-flex items-center text-sm font-medium;
+  }
+
+  .btn-save {
+    @apply rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80>
+  }
+}

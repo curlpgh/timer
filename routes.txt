@@ -1,0 +1,35 @@
+  GET     /users/register                        TimerWeb.UserRegistrationLive :new
+  GET     /users/log_in                          TimerWeb.UserLoginLive :new
+  GET     /users/reset_password                  TimerWeb.UserForgotPasswordLive :new
+  GET     /users/reset_password/:token           TimerWeb.UserResetPasswordLive :edit
+  POST    /users/log_in                          TimerWeb.UserSessionController :create
+  GET     /users/settings                        TimerWeb.UserSettingsLive :edit
+  GET     /users/settings/confirm_email/:token   TimerWeb.UserSettingsLive :confirm_email
+  DELETE  /users/log_out                         TimerWeb.UserSessionController :delete
+  GET     /users/confirm/:token                  TimerWeb.UserConfirmationLive :edit
+  GET     /users/confirm                         TimerWeb.UserConfirmationInstructionsLive :new
+  GET     /                                      TimerWeb.PageController :home
+  GET     /games                                 TimerWeb.GameLive.Index :index
+  GET     /games/new                             TimerWeb.GameLive.Index :new
+  GET     /games/:id/edit                        TimerWeb.GameLive.Index :edit
+  GET     /games/:id/show/start_timer            TimerWeb.GameLive.Show :start_timer
+  GET     /games/:id/show/stop_timer             TimerWeb.GameLive.Show :stop_timer
+  GET     /games/:id/show/restart_timer          TimerWeb.GameLive.Show :restart_timer
+  GET     /games/default                         TimerWeb.GameLive.Index :default
+  GET     /games/upload_logo                     TimerWeb.GameLive.Index :upload_logo
+  GET     /timer/:sheet                          TimerWeb.GameLive.Show :show
+  GET     /games/:id                             TimerWeb.GameLive.Show :show
+  GET     /api/games                             TimerWeb.GameController :index
+  GET     /api/games/:id                         TimerWeb.GameController :show
+  POST    /api/games                             TimerWeb.GameController :create
+  PATCH   /api/games/:id                         TimerWeb.GameController :update
+  PUT     /api/games/:id                         TimerWeb.GameController :update
+  DELETE  /api/games/:id                         TimerWeb.GameController :delete
+  GET     /dev/dashboard                         Phoenix.LiveDashboard.PageLive :home
+  GET     /dev/dashboard/:page                   Phoenix.LiveDashboard.PageLive :page
+  GET     /dev/dashboard/:node/:page             Phoenix.LiveDashboard.PageLive :page
+  *       /dev/mailbox                           Plug.Swoosh.MailboxPreview []
+  WS      /live/websocket                        Phoenix.LiveView.Socket
+  GET     /live/longpoll                         Phoenix.LiveView.Socket
+  POST    /live/longpoll                         Phoenix.LiveView.Socket
+

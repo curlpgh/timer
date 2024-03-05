@@ -1,0 +1,30 @@
+<div data-theme="light" class="h-screen">
+  <header class="px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between border-b border-zinc-100 py-3">
+      <div class="flex items-center gap-4">
+        <%= if @current_user.logo do %>
+          <.link href={~p"/"} class="">
+            <img
+              src={TimerWeb.Uploaders.Logo.url({@current_user.logo, @current_user}, :logo)}
+              class="h-12 w-12"
+              alt="Logo"
+            />
+          </.link>
+        <% else %>
+          <a href="/">
+            <.curling_rock />
+          </a>
+        <% end %>
+        <p class="">
+          Game Timer
+        </p>
+      </div>
+    </div>
+  </header>
+  <main class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <.flash_group flash={@flash} />
+      <%= @inner_content %>
+    </div>
+  </main>
+</div>

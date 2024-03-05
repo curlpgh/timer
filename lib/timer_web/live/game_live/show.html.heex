@@ -1,0 +1,72 @@
+<%= if @game.progress do %>
+  <div class={"flex flex-col h-screen #{@background_colour}"}>
+    <main class="flex-grow pt-6 grid place-items-center w-full">
+      <%= if @game.display_ends do %>
+        <div class="grid grid-cols-2 gap-16 place-items-center">
+          <div>
+            <%= for end_percent_complete <- @game.progress do %>
+              <div>
+                <progress
+                  class="progress progress-secondary bg-accent-content w-96 my-3 h-12"
+                  value={end_percent_complete}
+                  max="100"
+                >
+                </progress>
+              </div>
+            <% end %>
+          </div>
+          <div class="text-20xl">
+            <%= @game.end_they_should_be_on %>
+          </div>
+        </div>
+      <% end %>
+      <div class="flex gap-5">
+        <%= if @game.hours_remaining > 0 do %>
+          <div class="">
+            <span class="countdown font-mono text-20xl">
+              <span style={"--value:#{@game.hours_remaining};"}></span>
+            </span>
+            <span class="text-10xl">
+              hr
+            </span>
+          </div>
+        <% end %>
+        <%= if @game.hours_remaining > 0 || @game.minutes_remaining > 0 do %>
+          <div>
+            <span class="countdown font-mono text-20xl">
+              <span style={"--value:#{@game.minutes_remaining};"}></span>
+            </span>
+            <span class="text-10xl">
+              min
+            </span>
+          </div>
+        <% end %>
+        <div>
+          <span class="countdown font-mono text-20xl">
+            <span style={"--value:#{@game.seconds_remaining};"}></span>
+          </span>
+          <span class="text-10xl">
+            sec
+          </span>
+        </div>
+      </div>
+    </main>
+    <footer class="flex justify-between mx-6">
+      <div class="grid grid-cols-1 gap-4"></div>
+      <div class="grid grid-cols-3 gap-4">
+        <.link patch={~p"/games/#{@game}/show/start_timer"} title="Start" accesskey="s"><.play_svg /></.link>
+        <.link patch={~p"/games/#{@game}/show/stop_timer"} title="Pause" accesskey="p"><.pause_svg /></.link>
+        <.link patch={~p"/games/#{@game}/show/restart_timer"} title="Restart" accesskey="r">
+          <.arrow_path_svg />
+        </.link>
+      </div>
+      <div class="grid grid-cols-1 gap-4">
+        <.link navigate={~p"/games"}><.x_mark_svg /></.link>
+      </div>
+    </footer>
+  </div>
+<% else %>
+  <main class={"grid h-screen place-items-center #{@background_colour}"}>
+    <h1>Loading...</h1>
+  </main>
+<% end %>

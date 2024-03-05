@@ -1,0 +1,17 @@
+<div class="grid h-screen place-items-center bg-white">
+  <div class="flex flex-col place-items-center">
+    <.link navigate={~p"/games/default"} title="Start">
+      <%= if @conn.assigns[:current_user] && @current_user.logo do %>
+        <img
+          src={TimerWeb.Uploaders.Logo.url({@current_user.logo, @current_user}, :original)}
+          alt="Home"
+          height="400"
+          width="400"
+        />
+      <% else %>
+        <img src="/images/PCC-logo.png" alt="Home" height="400" width="400" />
+      <% end %>
+    </.link>
+    <.link navigate={~p"/games/default"} title="Start" accesskey="s"><.play_solid_svg /></.link>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+#!/bin/bash
+rsync -avzP --delete \
+--exclude=.git \
+--exclude=.elixir_ls \
+--exclude=_build \
+--exclude=cover \
+--exclude=notes \
+--exclude=ui \
+--exclude=timer.code-workspace \
+--exclude=copy_to_prod.sh \
+--exclude=.DS_Store \
+--exclude=test \
+--exclude=.formatter.exs \
+--exclude=.iex.exs \
+--exclude=.gitignore \
+--exclude=routes.txt \
+--exclude=assets/node_modules \
+--exclude=assets/package-lock.json \
+--exclude=deps \
+--exclude=mix.lock \
+--exclude=README.md \
+--exclude=priv/static/assets \
+--chmod=u+rw,g=rw,o=rX ../timer pcc-timer:/home/pghpcc/build

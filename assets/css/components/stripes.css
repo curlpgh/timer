@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .stripe-even:nth-of-type(even) {
+    @apply bg-indigo-50
+  }
+  
+  .stripe-odd:nth-of-type(odd) {
+    @apply bg-indigo-50
+  }
+
+  .stripe-even-slate:nth-of-type(even) {
+    @apply bg-slate-50
+  }
+  
+  .stripe-odd-slate:nth-of-type(odd) {
+    @apply bg-slate-50
+  }
+
+  .stripe-even-gray:nth-of-type(even) {
+    @apply bg-gray-50
+  }
+  
+  .stripe-odd-gray:nth-of-type(odd) {
+    @apply bg-gray-50
+  }
+
+  .stripe-even-zinc:nth-of-type(even) {
+    @apply bg-zinc-50
+  }
+  
+  .stripe-odd-zinc:nth-of-type(odd) {
+    @apply bg-zinc-50
+  }
+
+  .stripe-even-neutral:nth-of-type(even) {
+    @apply bg-neutral-50
+  }
+  
+  .stripe-odd-neutral:nth-of-type(odd) {
+    @apply bg-neutral-50
+  }
+
+  .stripe-even-stone:nth-of-type(even) {
+    @apply bg-stone-50
+  }
+  
+  .stripe-odd-stone:nth-of-type(odd) {
+    @apply bg-stone-50
+  }
+
+  .stripe-even-red:nth-of-type(even) {
+    @apply bg-red-50
+  }
+  
+  .stripe-odd-red:nth-of-type(odd) {
+    @apply bg-red-50
+  }
+
+  .stripe-even-orange:nth-of-type(even) {
+    @apply bg-orange-50
+  }
+  
+  .stripe-odd-orange:nth-of-type(odd) {
+    @apply bg-orange-50
+  }
+
+  .stripe-even-amber:nth-of-type(even) {
+    @apply bg-amber-50
+  }
+  
+  .stripe-odd-amber:nth-of-type(odd) {
+    @apply bg-amber-50
+  }
+
+  .stripe-even-yellow:nth-of-type(even) {
+    @apply bg-yellow-50
+  }
+  
+  .stripe-odd-yellow:nth-of-type(odd) {
+    @apply bg-yellow-50
+  }
+
+  .stripe-even-lime:nth-of-type(even) {
+    @apply bg-lime-50
+  }
+  
+  .stripe-odd-lime:nth-of-type(odd) {
+    @apply bg-lime-50
+  }
+
+  .stripe-even-green:nth-of-type(even) {
+    @apply bg-green-50
+  }
+  
+  .stripe-odd-green:nth-of-type(odd) {
+    @apply bg-green-50
+  }
+
+  .stripe-even-emerald:nth-of-type(even) {
+    @apply bg-emerald-50
+  }
+  
+  .stripe-odd-emerald:nth-of-type(odd) {
+    @apply bg-emerald-50
+  }
+
+  .stripe-even-teal:nth-of-type(even) {
+    @apply bg-teal-50
+  }
+  
+  .stripe-odd-teal:nth-of-type(odd) {
+    @apply bg-teal-50
+  }
+
+  .stripe-even-cyan:nth-of-type(even) {
+    @apply bg-cyan-50
+  }
+  
+  .stripe-odd-cyan:nth-of-type(odd) {
+    @apply bg-cyan-50
+  }
+
+  .stripe-even-sky:nth-of-type(even) {
+    @apply bg-sky-50
+  }
+  
+  .stripe-odd-sky:nth-of-type(odd) {
+    @apply bg-sky-50
+  }
+
+  .stripe-even-blue:nth-of-type(even) {
+    @apply bg-blue-50
+  }
+  
+  .stripe-odd-blue:nth-of-type(odd) {
+    @apply bg-blue-50
+  }
+
+  .stripe-even-indigo:nth-of-type(even) {
+    @apply bg-indigo-50
+  }
+  
+  .stripe-odd-indigo:nth-of-type(odd) {
+    @apply bg-indigo-50
+  }
+
+  .stripe-even-violet:nth-of-type(even) {
+    @apply bg-violet-50
+  }
+  
+  .stripe-odd-violet:nth-of-type(odd) {
+    @apply bg-violet-50
+  }
+
+  .stripe-even-purple:nth-of-type(even) {
+    @apply bg-purple-50
+  }
+  
+  .stripe-odd-purple:nth-of-type(odd) {
+    @apply bg-purple-50
+  }
+
+  .stripe-even-fuchsia:nth-of-type(even) {
+    @apply bg-fuchsia-50
+  }
+  
+  .stripe-odd-fuchsia:nth-of-type(odd) {
+    @apply bg-fuchsia-50
+  }
+
+  .stripe-even-pink:nth-of-type(even) {
+    @apply bg-pink-50
+  }
+  
+  .stripe-odd-pink:nth-of-type(odd) {
+    @apply bg-pink-50
+  }
+
+  .stripe-even-rose:nth-of-type(even) {
+    @apply bg-rose-50
+  }
+  
+  .stripe-odd-rose:nth-of-type(odd) {
+    @apply bg-rose-50
+  }
+}
